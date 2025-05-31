@@ -192,7 +192,6 @@
         </div>
         
         <ul id="task-list">
-            <!-- Tasks will be added here dynamically -->
         </ul>
         
         <div class="empty-state" id="empty-state">
@@ -209,10 +208,8 @@
             const taskList = document.getElementById('task-list');
             const emptyState = document.getElementById('empty-state');
             
-            // Load tasks from localStorage
             loadTasks();
             
-            // Add task event
             addBtn.addEventListener('click', addTask);
             taskInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') addTask();
@@ -222,11 +219,9 @@
                 const taskText = taskInput.value.trim();
                 
                 if (taskText) {
-                    // Create task item
                     const taskItem = document.createElement('li');
                     taskItem.className = 'task-item';
                     
-                    // Create checkbox
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
                     checkbox.className = 'task-checkbox';
@@ -235,16 +230,13 @@
                         saveTasks();
                     });
                     
-                    // Create task text
                     const taskTextSpan = document.createElement('span');
                     taskTextSpan.className = 'task-text';
                     taskTextSpan.textContent = taskText;
                     
-                    // Create actions container
                     const actionsDiv = document.createElement('div');
                     actionsDiv.className = 'task-actions';
                     
-                    // Create edit button
                     const editBtn = document.createElement('button');
                     editBtn.className = 'edit-btn';
                     editBtn.innerHTML = '<i class="fas fa-edit"></i>';
@@ -256,7 +248,6 @@
                         }
                     });
                     
-                    // Create delete button
                     const deleteBtn = document.createElement('button');
                     deleteBtn.className = 'delete-btn';
                     deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
@@ -268,7 +259,6 @@
                         }
                     });
                     
-                    // Append elements
                     actionsDiv.appendChild(editBtn);
                     actionsDiv.appendChild(deleteBtn);
                     
@@ -276,13 +266,10 @@
                     taskItem.appendChild(taskTextSpan);
                     taskItem.appendChild(actionsDiv);
                     
-                    // Add to list
                     taskList.appendChild(taskItem);
                     
-                    // Clear input
                     taskInput.value = '';
                     
-                    // Save and update UI
                     saveTasks();
                     checkEmptyState();
                 }
@@ -304,11 +291,9 @@
                 
                 if (tasks.length > 0) {
                     tasks.forEach(task => {
-                        // Create task item
                         const taskItem = document.createElement('li');
                         taskItem.className = 'task-item';
                         
-                        // Create checkbox
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
                         checkbox.className = 'task-checkbox';
@@ -318,7 +303,6 @@
                             saveTasks();
                         });
                         
-                        // Create task text
                         const taskTextSpan = document.createElement('span');
                         taskTextSpan.className = 'task-text';
                         if (task.completed) {
@@ -326,11 +310,9 @@
                         }
                         taskTextSpan.textContent = task.text;
                         
-                        // Create actions container
                         const actionsDiv = document.createElement('div');
                         actionsDiv.className = 'task-actions';
                         
-                        // Create edit button
                         const editBtn = document.createElement('button');
                         editBtn.className = 'edit-btn';
                         editBtn.innerHTML = '<i class="fas fa-edit"></i>';
@@ -342,7 +324,6 @@
                             }
                         });
                         
-                        // Create delete button
                         const deleteBtn = document.createElement('button');
                         deleteBtn.className = 'delete-btn';
                         deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
@@ -354,7 +335,6 @@
                             }
                         });
                         
-                        // Append elements
                         actionsDiv.appendChild(editBtn);
                         actionsDiv.appendChild(deleteBtn);
                         
@@ -362,7 +342,6 @@
                         taskItem.appendChild(taskTextSpan);
                         taskItem.appendChild(actionsDiv);
                         
-                        // Add to list
                         taskList.appendChild(taskItem);
                     });
                     
